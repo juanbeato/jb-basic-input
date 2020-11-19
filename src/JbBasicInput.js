@@ -1,4 +1,6 @@
 import { html, css, LitElement, unsafeCSS } from 'lit-element';
+import '@polymer/iron-icon/iron-icon.js';
+import '@polymer/iron-icons/iron-icons.js';
 import style from './JbBasicInput.scss';
 
 export class JbBasicInput extends LitElement {
@@ -8,15 +10,25 @@ export class JbBasicInput extends LitElement {
 
   static get properties() {
     return {
-      title: { type: String },
-      counter: { type: Number },
+      label: { type: String },
+      rightIcon: { type: String },
+      leftIcon: { type: String },
+      inputType: { type: String },
+      inputValue: { type: String },
+      infoMessageIcon: { type: String },
+      infoMessage: { type: String },
     };
   }
 
   constructor() {
     super();
-    this.title = 'Hey there';
-    this.counter = 5;
+    this.label = '';
+    this.infoMessage = '';
+    this.inputValue = '';
+    this.rightIcon = '';
+    this.leftIcon = '';
+    this.inputType = 'text';
+    this.infoMessageIcon = 'error';
   }
 
   __increment() {
@@ -25,8 +37,32 @@ export class JbBasicInput extends LitElement {
 
   render() {
     return html`
-      <h2>${this.title} Nr. ${this.counter}!</h2>
-      <button @click=${this.__increment}>increment</button>
+      <p>${this.label}</p>
+      ${this._inputTemplate}
+      ${this._infoMessageTemplate}
     `;
+  }
+
+  get _inputTemplate() {
+    return html`
+      <div class="jb-basic-input-container">
+        ${this._inputIconTemplate(this.leftIcon)}
+        <input class="jb-basic-input-container__input" type=${this.inputType} value=${this.inputValue}>
+        ${this._inputIconTemplate(this.rightIcon)}
+      </div>
+    `;
+  }
+
+  get _infoMessageTemplate() {
+    return this.infoMessage 
+      ? html`<p>${this.infoMessage}</p>
+      <iron-icon icon=${this.infoMessageIcon}></iron-icon>`
+      : html``
+  }
+
+  _inputIconTemplate(icon) {
+    return icon
+      ? html`<iron-icon class="jb-basic-input-container__icon" icon=${icon}></iron-icon>`
+      : html``
   }
 }

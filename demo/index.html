@@ -2,6 +2,7 @@
 <html lang="en-GB">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
   <style>
     body {
       background: #fafafa;
@@ -10,7 +11,22 @@
 </head>
 <body>
   <div id="demo">
-    <jb-basic-input title="Example title"></jb-basic-input>
+    <jb-basic-input 
+    id="basicExample"
+    label="Example label"></jb-basic-input>
+    <jb-basic-input 
+    id="iconExample"
+    label="Example left icon"
+    righticon="search"></jb-basic-input>
+    <jb-basic-input 
+    id="iconExample"
+    label="Example right icon"
+    lefticon="perm-identity"></jb-basic-input>
+    <jb-basic-input 
+    id="iconExample"
+    label="Example both icons"
+    righticon="search"
+    lefticon="apps"></jb-basic-input>
   </div>
 </body>
 </html>

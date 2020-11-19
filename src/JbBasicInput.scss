@@ -1,4 +1,28 @@
-$bgColor: red;
-h2 {
-    background-color: $bgColor;
+.jb-basic-input {
+    &-container {
+        display: flex;
+        max-width: 370px;
+        border: 1px solid black;
+        padding: 8px;
+        margin-bottom: 8px;
+        height: 30px;
+        align-items: center;
+
+        &__input {
+            outline: none;
+            border: none;
+            flex: 1;
+            background-color: initial;
+            padding-left: 4px;
+        }
+
+        &__input:focus {
+            outline: none;
+            border: none;
+        }
+
+        &__icon {
+            cursor: pointer;
+        }
+    }
 }
